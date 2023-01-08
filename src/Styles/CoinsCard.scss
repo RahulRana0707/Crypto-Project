@@ -1,0 +1,40 @@
+@import "All.scss";
+.card {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  background-color: var(--color-white);
+  transition: all 300ms ease-in-out;
+  scale: .9;
+  &:hover{
+    scale: 1;
+  }
+  .coin-image {
+    img {
+      width: 70px;
+      height: 70px;
+    }
+  }
+  .coin-name {
+    h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+  }
+  .coin-established {
+    p {
+      font-size: 1rem;
+      span{
+        padding-left: .5rem;
+      }
+    }
+  }
+}
