@@ -4,6 +4,21 @@
   width: 100vw;
   padding: 5rem;
   background-color: var(--color-background);
+  .filters {
+    margin: 1rem 0;
+    .search-bar {
+      input {
+        width: 500px;
+        outline: none;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        color: var(--color-dark);
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      }
+    }
+  }
   .coins-table-container {
     background-color: var(--color-background);
     box-shadow: var(--box-shadow);
@@ -55,6 +70,26 @@
               height: 25px;
             }
           }
+        }
+      }
+    }
+  }
+  .pagination {
+    margin: 2rem 0;
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.2rem;
+      li {
+        button {
+          font-size: 1.3rem;
+          color: #6ea8fe;
+          padding: 0.5rem 1rem;
+          background-color: var(--color-background);
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+          cursor: pointer;
+          border-radius: 5px;
         }
       }
     }
