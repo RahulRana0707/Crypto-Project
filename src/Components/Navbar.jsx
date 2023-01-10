@@ -25,9 +25,9 @@ function Navbar() {
           </span>
           <h3 className="logo-name">Crypto Castle</h3>
         </div>
-        <div className="nav-links" ref={ref}>
+        <div className="nav-links" ref={ref} onClick={closeNav}>
           <ul>
-          <span onClick={closeNav}><AiOutlineClose/></span>
+          <span><AiOutlineClose/></span>
             <li>
               <Link to={"/"}>Home</Link>
             </li>

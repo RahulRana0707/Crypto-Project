@@ -1,0 +1,62 @@
+@import "All.scss";
+
+.coin-page {
+  width: 100vw;
+  padding: 5rem;
+  background-color: var(--color-background);
+  .coins-table-container {
+    background-color: var(--color-background);
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+    table {
+      width: 100%;
+      tr {
+        width: 100%;
+        background-color: var(--color-background);
+        transition: all 300ms ease;
+        &:hover {
+          background-color: var(--color-light);
+        }
+        th {
+          padding: 1.2rem 0;
+          font-size: 1rem;
+          font-weight: 700;
+        }
+        td {
+          padding: 1rem 0;
+          font-size: 1rem;
+          border-radius: 2px;
+          text-align: center;
+          span {
+            margin-right: 2px;
+          }
+        }
+        .rank {
+          width: 5%;
+        }
+        .unique {
+          padding-left: 10px;
+          width: 20%;
+          display: flex;
+          justify-content: flex-start;
+        }
+        .common {
+          width: 15%;
+        }
+        .logo-name {
+          a {
+            cursor: pointer;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            img {
+              padding-right: 2px;
+              width: 25px;
+              height: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

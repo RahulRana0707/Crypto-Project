@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { server } from "../index";
 import axios from "axios";
 import CoinsCard from "./CoinsCard";
-import Loader from "../Components/Loader";
+import Loader from "./Loader";
 function Exchnages() {
   const [exchanges, setExchanges] = useState([]);
   const [loader, setLoader] = useState(true);
@@ -24,8 +24,7 @@ function Exchnages() {
       if (a.name > b.name) return 1;
       return 0;
     })
-    setExchanges(newArr);
-    console.log(exchanges)
+    setExchanges(prev => [...prev],newArr);
   }
   const changeYearOrder=()=>{
     const newArr = exchanges.sort((a,b)=>{
@@ -33,8 +32,7 @@ function Exchnages() {
       if (a.year_established < b.year_established) return 1;
       return 0;
     })
-    setExchanges(newArr);
-    console.log(exchanges)
+    setExchanges(prev => [...prev],newArr);
   }
   const changeCountryOrder=()=>{
     const newArr = exchanges.sort((a,b)=>{
@@ -42,11 +40,10 @@ function Exchnages() {
       if (a.country > b.country) return 1;
       return 0;
     })
-    setExchanges(newArr);
-    console.log(exchanges)
+    setExchanges(prev => [...prev],newArr);
   }
   return (
-    <div className="Exchnages">
+    <div className="Exchanges">
       {loader ? (
         <Loader />
       ) : (
@@ -60,6 +57,7 @@ function Exchnages() {
             {exchanges.map((i, key) => (
               <CoinsCard
                 key={key}
+                url={i.url}
                 img={i.image}
                 name={i.name}
                 rank={i.trust_score_rank}

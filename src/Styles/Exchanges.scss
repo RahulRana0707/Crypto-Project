@@ -1,6 +1,7 @@
 @import "All.scss";
 
-.Exchnages{
+.Exchanges{
+    z-index: -1;
     width: 100vw;
     padding: 3rem;
     .filter-btn{
@@ -29,5 +30,20 @@
         flex-wrap: wrap;
         margin-top: 2rem;
         gap: 1rem;
+    }
+}
+@media screen and (max-width:500px) {
+    .Exchanges{
+        padding: 1rem;
+        .filter-btn{
+            gap: 1rem;
+            button{
+                padding: .5rem 1rem;
+                font-size: .8rem;
+            }
+        }
+        .exchanges-data{
+            gap: .5rem;
+        }
     }
 }
