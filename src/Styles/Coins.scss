@@ -5,6 +5,10 @@
   padding: 5rem;
   background-color: var(--color-background);
   .filters {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3rem;
     margin: 1rem 0;
     .search-bar {
       input {
@@ -13,7 +17,7 @@
         padding: 1rem 2rem;
         font-size: 1rem;
         color: var(--color-dark);
-        border-radius: 10px;
+        border-radius: 5px;
         cursor: pointer;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
       }
@@ -95,3 +99,123 @@
     }
   }
 }
+@media screen and (max-width:991px) {
+  .coin-page{
+    padding: 2rem;
+  }
+}
+@media screen and (max-width:768px) {
+  .coin-page{
+    .filters{
+      .search-bar{
+        input{
+          width: 400px;
+        }
+      }
+    }
+    .coins-table-container{
+      table{
+        width: 90%;
+        tr{
+          th{
+            font-size: 1rem;
+          }
+          td{
+            font-size: .8rem;
+          }
+          .remove{
+            display: none;
+          }
+        }
+      }
+    }
+  } 
+}
+@media screen and (max-width:450px) {
+  .coin-page{
+    .filters{
+      .search-bar{
+        input{
+          width: 300px;
+        }
+      }
+    }
+    .coins-table-container{
+      table{
+        tr{
+          .remove{
+            display: none;
+          }
+          .remove-volume{
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width:370px) {
+  .coin-page{
+    padding: 1rem;
+    .filters{
+      .search-bar{
+        input{
+          width: 200px;
+        }
+      }
+    }
+    .coins-table-container{
+      table{
+        tr{
+          th{
+            font-size: .8rem;
+          }
+          td{
+            font-size: .5rem;
+          }
+          .remove{
+            display: none;
+          }
+          .remove-volume{
+            display: none;
+          }
+          .remove-market-cap{
+            display: none;
+          }
+          .logo-name {
+            a {
+              img {
+                padding-right: 2px;
+                width: 15px;
+                height: 15px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .pagination {
+      ul {
+        gap: 0.1rem;
+        li {
+          button {
+            font-size: 0.5rem;
+            padding: 0.3rem 0.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width:210px){
+  .coin-page{
+    padding: 1rem;
+    .filters{
+      .search-bar{
+        input{
+          width: 150px;
+        }
+      }
+    }
+  }
+} 

@@ -5,6 +5,7 @@ import DataTableTemplate from "./DataTableTemplate";
 import Error from "./Error";
 import Loader from "./Loader";
 import server_down from "../Assets/server_down.png"
+import Pagination from "./Pagination";
 function Coins() {
   const [coins, setCoins] = useState([]);
   const [loader, setLoader] = useState(true);
@@ -17,6 +18,7 @@ function Coins() {
   };
   const handlePrevious =()=>{
     if (page ===1) {
+      alert("The current page no is 1");
       setPage(1);
     }else{
       setPage(prev => prev-1);
@@ -59,13 +61,13 @@ function Coins() {
             <table>
               <thead>
                 <tr>
-                  <th className="rank">#rank</th>
+                  <th className="rank remove-rank">#rank</th>
                   <th className="unique">coin</th>
                   <th className="common">price</th>
-                  <th className="common">24h high</th>
-                  <th className="common">24h low</th>
-                  <th className="common">market cap</th>
-                  <th className="common">total volume</th>
+                  <th className="common remove">24h high</th>
+                  <th className="common remove">24h low</th>
+                  <th className="common remove-market-cap">market cap</th>
+                  <th className="common remove-volume">total volume</th>
                 </tr>
 
                 {coins
@@ -88,25 +90,7 @@ function Coins() {
               </thead>
             </table>
           </div>
-          <div className="pagination">
-              <ul>
-                <li className="page-item">
-                  <button onClick={handlePrevious}>previous</button>
-                </li>
-                <li className="page-item">
-                  <button onClick={()=>{setPage(1)}}>1</button>
-                </li>
-                <li className="page-item">
-                  <button onClick={()=>{setPage(2)}}>2</button>
-                </li>
-                <li className="page-item">
-                  <button onClick={()=>{setPage(3)}}>3</button>
-                </li>
-                <li className="page-item">
-                  <button onClick={()=>{setPage(prev=>prev+1)}}>next</button>
-                </li>
-              </ul>
-          </div>
+          <Pagination handlePrevious={handlePrevious} setPage={setPage}/>
         </div>
       )}
     </>

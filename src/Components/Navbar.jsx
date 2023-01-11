@@ -38,7 +38,7 @@ function Navbar() {
               <Link to={"exchanges"}>exchanges</Link>
             </li>
             <li>
-              <Link to={"/crypto:id"}>crypto details</Link>
+              <Link to={"/crypto/:id"}>crypto details</Link>
             </li>
             <li>
               <Link to={"/contact"}>contact me</Link>

@@ -1,49 +1,88 @@
 @import "All.scss";
 
-.Exchanges{
-    z-index: -1;
-    width: 100vw;
-    padding: 3rem;
-    .filter-btn{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        button{
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            background-color: var(--color-white);
-            cursor: pointer;
-            color: var(--color-dark);
-            transition: all 500ms ease;
-            box-shadow: var(--box-shadow);
-            border-radius: 10px;
-            &:hover{
-                scale: 1.1;
-            }
+.Exchanges {
+  z-index: -1;
+  width: 100vw;
+  padding: 3rem;
+  .filter-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    button {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      background-color: var(--color-white);
+      cursor: pointer;
+      color: var(--color-dark);
+      transition: all 500ms ease;
+      box-shadow: var(--box-shadow);
+      border-radius: 10px;
+      &:hover {
+        scale: 1.1;
+      }
+    }
+  }
+  .exchanges-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.2rem;
+      li {
+        button {
+          font-size: 1.3rem;
+          color: #6ea8fe;
+          padding: 0.5rem 1rem;
+          background-color: var(--color-background);
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+          cursor: pointer;
+          border-radius: 5px;
         }
+      }
     }
-    .exchanges-data{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        margin-top: 2rem;
-        gap: 1rem;
-    }
+  }
 }
-@media screen and (max-width:500px) {
-    .Exchanges{
-        padding: 1rem;
-        .filter-btn{
-            gap: 1rem;
-            button{
-                padding: .5rem 1rem;
-                font-size: .8rem;
-            }
-        }
-        .exchanges-data{
-            gap: .5rem;
-        }
+@media screen and (max-width: 500px) {
+  .Exchanges {
+    padding: 1rem;
+    .filter-btn {
+      gap: 1rem;
+      button {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
     }
+    .exchanges-data {
+      gap: 0.5rem;
+    }
+  }
+}
+@media screen and (max-width: 350px) {
+  .Exchanges{
+    .pagination {
+        ul {
+          gap: 0.1rem;
+          li {
+            button {
+              font-size: 0.5rem;
+              padding: 0.3rem 0.8rem;
+            }
+          }
+        }
+      }
+  }
 }
