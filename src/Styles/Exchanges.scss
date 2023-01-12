@@ -72,17 +72,17 @@
   }
 }
 @media screen and (max-width: 350px) {
-  .Exchanges{
+  .Exchanges {
     .pagination {
-        ul {
-          gap: 0.1rem;
-          li {
-            button {
-              font-size: 0.5rem;
-              padding: 0.3rem 0.8rem;
-            }
+      ul {
+        gap: 0.1rem;
+        li {
+          button {
+            font-size: 0.5rem;
+            padding: 0.3rem 0.8rem;
           }
         }
       }
+    }
   }
 }
