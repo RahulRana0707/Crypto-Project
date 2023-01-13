@@ -8,8 +8,9 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 3rem;
+    gap: 1rem;
     margin: 1rem 0;
+    flex-wrap: wrap;
     .search-bar {
       input {
         width: 500px;
@@ -20,6 +21,24 @@
         border-radius: 5px;
         cursor: pointer;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      }
+    }
+    .currency-btn{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: .5rem;
+      button{
+        padding: .5rem 1rem;
+        background-color: var(--color-background);
+        font-size: 1.2rem;
+        border-radius: 5px;
+        cursor: pointer;
+        color: var(--color-dark);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        span{
+          margin-right: 2px;
+        }
       }
     }
   }
@@ -163,6 +182,12 @@
           width: 200px;
         }
       }
+      .currency-btn{
+        button{
+          font-size: .8rem;
+          padding: .5rem 1rem;
+        }
+      }
     }
     .coins-table-container{
       table{
@@ -214,6 +239,12 @@
       .search-bar{
         input{
           width: 150px;
+        }
+      }
+      .currency-btn{
+        button{
+          font-size: .5rem;
+          padding: .3rem .5rem;
         }
       }
     }

@@ -9,10 +9,11 @@ import Pagination from "./Pagination";
 function Coins() {
   const [coins, setCoins] = useState([]);
   const [loader, setLoader] = useState(true);
-  const [currencySymbol, setCurrencySymbol] = useState("$");
+  const [currency, setCurrency] = useState("inr");
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [error,setError] = useState(false);
+  const currencySymbol = currency === "inr" ? "₹" : currency === "eur" ? "€" : "$"
   const handleOnchange = (e) => {
     setSearch(e.target.value);
   };
@@ -28,9 +29,10 @@ function Coins() {
     const fetch = async () => {
       try {
         const { data } = await axios.get(
-          `${server}/coins/markets?vs_currency=usd&per_page=100&page=${page}`
+          `${server}/coins/markets?vs_currency=${currency}&per_page=100&page=${page}`
         );
         setCoins(data);
+        console.log(data)
         setLoader(false);
       } catch (error) {
         setLoader(false);
@@ -38,7 +40,7 @@ function Coins() {
       }
     };
     fetch();
-  }, [page]);
+  }, [page,currency]);
   if (error) return <Error image={server_down} error_code="400 - bad request" error_name = "url"/>
   return (
     <>
@@ -55,6 +57,11 @@ function Coins() {
                 placeholder="Search the coin you need..."
                 autoComplete="off"
               ></input>
+            </div>
+            <div className="currency-btn">
+              <button onClick={()=>{setCurrency("inr")}}><span>₹</span>INR</button>
+              <button onClick={()=>{setCurrency("usd")}}><span>$</span>USD</button>
+              <button onClick={()=>{setCurrency("eur")}}><span>€</span>EURO</button>
             </div>
           </div>
           <div className="coins-table-container">
