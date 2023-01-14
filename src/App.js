@@ -4,7 +4,6 @@ import Home from "./Components/Home"
 import Coins from "./Components/Coins"
 import Exchanges from "./Components/Exchanges"
 import CryptoDetails from "./Components/CryptoDetails"
-import Contact from "./Components/Contact"
 import "../src/Styles/All.scss"
 import "../src/Styles/Navbar.scss"
 import "../src/Styles/CoinsCard.scss"
@@ -21,7 +20,6 @@ function App() {
         <Route path="/coins" element={<Coins/>}></Route>
         <Route path="/exchanges" element={<Exchanges/>}></Route>
         <Route path="/crypto/:id" element={<CryptoDetails/>}></Route>
-        <Route path="/contact" element={<Contact/>}></Route>
         <Route path="*" element={<Error image={page_not_found} error_code="404 - page not found" error_name = "page"/>}></Route>
       </Routes>
     </Router>

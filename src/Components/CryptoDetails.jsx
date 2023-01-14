@@ -6,7 +6,8 @@ import Loader from "../Components/Loader";
 import { server } from "../index";
 import { useParams } from "react-router-dom";
 import { BiLinkAlt, BiLinkExternal, BiCodeAlt } from "react-icons/bi";
-import { TbTriangle, TbTriangleInverted } from "react-icons/tb";
+import { VscTriangleUp, VscTriangleDown } from "react-icons/vsc";
+import "../Styles/CryptoDetails.scss";
 function CryptoDetails() {
   const [coin, setCoin] = useState([]);
   const [loader, setLoader] = useState(true);
@@ -43,8 +44,31 @@ function CryptoDetails() {
       {loader ? (
         <Loader />
       ) : (
-        <>
-          <div className="details-page">
+        <div className="details-page">
+          <div className="currency-btn">
+            <button
+              onClick={() => {
+                setCurrency("inr");
+              }}
+            >
+              <span>₹</span>INR
+            </button>
+            <button
+              onClick={() => {
+                setCurrency("usd");
+              }}
+            >
+              <span>$</span>USD
+            </button>
+            <button
+              onClick={() => {
+                setCurrency("eur");
+              }}
+            >
+              <span>€</span>EURO
+            </button>
+          </div>
+          <div className="details-section">
             <div className="crypto-details">
               <div className="first-container">
                 <div className="image">
@@ -57,14 +81,14 @@ function CryptoDetails() {
                   <h4>{coin.symbol}</h4>
                 </div>
                 <div className="crypto-rank">
-                  <h3>{coin.market_cap_rank}</h3>
+                  <h3>#rank{coin.market_cap_rank}</h3>
                 </div>
                 <div className="crypto-homepage">
                   <a
                     href={
                       coin.links.homepage[0]
                         ? coin.links.homepage[0]
-                        : alert("Sorry, Page not available")
+                        : "Not Available"
                     }
                     rel="noreferrer"
                     target="_blank"
@@ -80,7 +104,11 @@ function CryptoDetails() {
                 </div>
                 <div className="crypto-repo">
                   <a
-                    href={coin.links.repos_url.github}
+                    href={
+                      coin.links.repos_url.github
+                        ? coin.links.repos_url.github
+                        : "Not Available"
+                    }
                     rel="noreferrer"
                     target="_blank"
                   >
@@ -97,7 +125,7 @@ function CryptoDetails() {
               <div className="second-container">
                 <div className="crypto-name">
                   <h2>
-                    {coin.name} price ({coin.symbol})
+                    {coin.name}({coin.symbol})
                   </h2>
                 </div>
                 <div className="crypto-price-high">
@@ -107,38 +135,41 @@ function CryptoDetails() {
                       {coin.market_data.current_price[currency]}
                     </h2>
                   </div>
-                  <div className="high-low">
-                    <h3
-                      style={
-                        coin.market_data.price_change_24h > 0
-                          ? { backgroundColor: "#5cb85c" }
-                          : { backgroundColor: "#d9534f" }
-                      }
-                    >
-                      {coin.market_data.price_change_24h}
-                      <span>
-                        {coin.market_data.price_change_24h > 0 ? (
-                          <TbTriangle />
-                        ) : (
-                          <TbTriangleInverted />
-                        )}
-                      </span>
-                    </h3>
+                  <div
+                    className="high-low"
+                    style={
+                      coin.market_data.price_change_24h > 0
+                        ? { backgroundColor: "#16c784" }
+                        : { backgroundColor: "#ea3943" }
+                    }
+                  >
+                    <h3>{currencySymbol}{coin.market_data.price_change_24h_in_currency[currency]}</h3>
+                    <span>
+                      {coin.market_data.price_change_24h > 0 ? (
+                        <VscTriangleUp />
+                      ) : (
+                        <VscTriangleDown />
+                      )}
+                    </span>
                   </div>
                 </div>
                 <div className="low-24h">
                   <h5>low</h5>
-                  <b>
+                  <div className="low-price">
                     <span>{currencySymbol}</span>
-                    {coin.market_data.low_24h[currency]}
-                  </b>
+                    <b>{coin.market_data.low_24h[currency]}</b>
+                  </div>
                 </div>
                 <div className="high-24h">
                   <h5>high</h5>
-                  <b>
+                  <div className="low-price">
                     <span>{currencySymbol}</span>
-                    {coin.market_data.high_24h[currency]}
-                  </b>
+                    <b>{coin.market_data.low_24h[currency]}</b>
+                  </div>
+                </div>
+                <div className="total-supply">
+                  <h2>total supply</h2>
+                  <span>{currencySymbol}{coin.market_data.total_supply}</span>
                 </div>
               </div>
               <div className="third-container">
@@ -153,7 +184,9 @@ function CryptoDetails() {
                   <h4>Fully Diluted Market Cap</h4>
                   <h3>
                     <span>{currencySymbol}</span>
-                    {coin.market_data.fully_diluted_valuation[currency]}
+                    {coin.market_data.fully_diluted_valuation[currency]
+                      ? coin.market_data.fully_diluted_valuation[currency]
+                      : "N/A"}
                   </h3>
                 </div>
                 <div className="total-volume">
@@ -168,8 +201,8 @@ function CryptoDetails() {
                   <b
                     style={
                       coin.public_interest_score > 0
-                        ? { backgroundColor: "#5cb85c" }
-                        : { backgroundColor: "#d9534f" }
+                        ? { backgroundColor: "#16c784" }
+                        : { backgroundColor: "#ea3943" }
                     }
                   >
                     {coin.public_interest_score}
@@ -177,8 +210,9 @@ function CryptoDetails() {
                 </div>
               </div>
             </div>
+            <div className="chart">hii</div>
           </div>
-        </>
+        </div>
       )}
     </>
   );

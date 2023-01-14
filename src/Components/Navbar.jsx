@@ -37,12 +37,6 @@ function Navbar() {
             <li>
               <Link to={"exchanges"}>exchanges</Link>
             </li>
-            <li>
-              <Link to={"/crypto/:id"}>crypto details</Link>
-            </li>
-            <li>
-              <Link to={"/contact"}>contact me</Link>
-            </li>
           </ul>
         </div>
         <div className="corner-btn">
