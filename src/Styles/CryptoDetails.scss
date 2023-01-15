@@ -5,9 +5,12 @@
   padding: 2rem 5rem;
   overflow-x: hidden;
   background-color: var(--color-background);
+  .chart{
+    width: 100%;
+  }
   .currency-btn {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
     flex-wrap: wrap;
@@ -20,22 +23,34 @@
       font-weight: 700;
       cursor: pointer;
       color: var(--color-dark);
-      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      box-shadow: var(--box-shadow);
+      transition: all 0.5s ease;
       span {
         margin-right: 2px;
+      }
+      &:hover {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
       }
     }
   }
   .details-section {
     display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     .crypto-details {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
       background-color: var(--color-background);
+      .first-container,
+      .second-container,
+      .third-container {
+        transition: all 0.5s ease;
+        &:hover {
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+      }
       .first-container {
         height: 40vh;
         display: flex;
@@ -109,7 +124,7 @@
         box-shadow: var(--box-shadow);
         .crypto-name {
           h2 {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 600;
           }
         }
@@ -121,7 +136,7 @@
           gap: 0.3rem;
           .price {
             h2 {
-              font-size: 1.5rem;
+              font-size: 1.2rem;
               font-weight: 800;
             }
           }
@@ -151,16 +166,16 @@
           gap: 1rem;
           flex-wrap: wrap;
           h5 {
-            font-size: 1.5rem;
+            font-size: 0.8rem;
             font-weight: 600;
           }
           .low-price {
             span {
-              font-size: 1.4rem;
+              font-size: 1.2rem;
               font-weight: 700;
             }
             b {
-              font-size: 1.4rem;
+              font-size: 1.2rem;
               font-weight: 700;
             }
           }
@@ -172,7 +187,7 @@
           flex-wrap: wrap;
           gap: 0.5rem;
           h2 {
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-weight: 600;
           }
           span {
@@ -201,11 +216,11 @@
           gap: 5px;
           flex-wrap: wrap;
           h4 {
-            font-size: 1rem;
+            font-size: 0.8rem;
             font-weight: 700;
           }
           h3 {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 600;
           }
           b {
@@ -227,6 +242,20 @@
 @media screen and (max-width: 991px) {
   .details-page {
     padding: 2rem 7rem;
+    .details-section {
+      .crypto-details {
+        .first-container {
+          .image {
+            img {
+              width: 50px;
+              height: 50px;
+            }
+          }
+        }
+        .second-container {
+        }
+      }
+    }
   }
 }
 @media screen and (max-width: 768px) {
@@ -234,27 +263,31 @@
     padding: 2rem 5rem;
     .details-section {
       display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column-reverse;
       .crypto-details {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        .first-container,.second-container,.third-container{
+        .first-container,
+        .second-container,
+        .third-container {
           width: 50vw;
-          height: 30vh;
+          height: 35vh;
         }
       }
     }
   }
 }
-@media screen and (max-width: 464px){
-  .details-page{
-    .details-section{
-      .crypto-details{
-        .first-container,.second-container,.third-container{
+@media screen and (max-width: 464px) {
+  .details-page {
+    .details-section {
+      .crypto-details {
+        .first-container,
+        .second-container,
+        .third-container {
           width: 70vw;
           height: 30vh;
         }
@@ -262,13 +295,28 @@
     }
   }
 }
-@media screen and (max-width: 305px){
-  .details-page{
-    .details-section{
-      .crypto-details{
-        .first-container,.second-container,.third-container{
+@media screen and (max-width: 305px) {
+  .details-page {
+    .details-section {
+      .crypto-details {
+        .first-container,
+        .second-container,
+        .third-container {
           width: 100%;
           height: 30vh;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-height: 800px) {
+  .details-page {
+    .details-section {
+      .crypto-details {
+        .first-container,
+        .second-container,
+        .third-container {
+          height: 45vh;
         }
       }
     }

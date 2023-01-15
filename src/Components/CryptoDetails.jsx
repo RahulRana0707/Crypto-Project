@@ -8,11 +8,14 @@ import { useParams } from "react-router-dom";
 import { BiLinkAlt, BiLinkExternal, BiCodeAlt } from "react-icons/bi";
 import { VscTriangleUp, VscTriangleDown } from "react-icons/vsc";
 import "../Styles/CryptoDetails.scss";
+import Chart from "./Chart";
 function CryptoDetails() {
   const [coin, setCoin] = useState([]);
   const [loader, setLoader] = useState(true);
   const [currency, setCurrency] = useState("inr");
   const [error, setError] = useState(false);
+  const [days,setDays] = useState("24h");
+  const [chartArr,setChartrr] = useState([]);
   const params = useParams();
   const currencySymbol =
     currency === "inr" ? "₹" : currency === "eur" ? "€" : "$";
@@ -20,8 +23,9 @@ function CryptoDetails() {
     const fetch = async () => {
       try {
         const { data } = await axios.get(`${server}/coins/${params.id}`);
+        const {data:chartData} = await axios.get(`${server}/coins/${params.id}/market_chart?vs_currency=${currency}&days=${days}`)
         setCoin(data);
-        console.log(data);
+        setChartrr(chartData.prices);
         setLoader(false);
       } catch (error) {
         console.log(error);
@@ -29,7 +33,7 @@ function CryptoDetails() {
       }
     };
     fetch();
-  }, [currency, params]);
+  }, [currency, params,days]);
 
   if (error)
     return (
@@ -143,7 +147,10 @@ function CryptoDetails() {
                         : { backgroundColor: "#ea3943" }
                     }
                   >
-                    <h3>{currencySymbol}{coin.market_data.price_change_24h_in_currency[currency]}</h3>
+                    <h3>
+                      {currencySymbol}
+                      {coin.market_data.price_change_24h_in_currency[currency]}
+                    </h3>
                     <span>
                       {coin.market_data.price_change_24h > 0 ? (
                         <VscTriangleUp />
@@ -169,7 +176,10 @@ function CryptoDetails() {
                 </div>
                 <div className="total-supply">
                   <h2>total supply</h2>
-                  <span>{currencySymbol}{coin.market_data.total_supply}</span>
+                  <span>
+                    {currencySymbol}
+                    {coin.market_data.total_supply}
+                  </span>
                 </div>
               </div>
               <div className="third-container">
@@ -210,8 +220,10 @@ function CryptoDetails() {
                 </div>
               </div>
             </div>
-            <div className="chart">hii</div>
           </div>
+          <div className="chart">
+              <Chart currency={currency} arr={chartArr} />
+            </div>
         </div>
       )}
     </>
