@@ -32,7 +32,7 @@ function Coins() {
           `${server}/coins/markets?vs_currency=${currency}&per_page=100&page=${page}`
         );
         setCoins(data);
-        console.log(data)
+        console.log(data);
         setLoader(false);
       } catch (error) {
         setLoader(false);

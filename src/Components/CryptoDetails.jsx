@@ -14,16 +14,59 @@ function CryptoDetails() {
   const [loader, setLoader] = useState(true);
   const [currency, setCurrency] = useState("inr");
   const [error, setError] = useState(false);
-  const [days,setDays] = useState("24h");
-  const [chartArr,setChartrr] = useState([]);
+  const [days, setDays] = useState("24h");
+  const [chartArr, setChartrr] = useState([]);
   const params = useParams();
   const currencySymbol =
     currency === "inr" ? "₹" : currency === "eur" ? "€" : "$";
+  const btns = ["24h", "7d", "14d", "30d", "60d", "200d", "365d", "max"];
+  const switchChartData = (value) => {
+    switch (value) {
+      case "24h":
+        setDays("24h");
+        setLoader(true);
+        break;
+      case "7d":
+        setDays("7d");
+        setLoader(true);
+        break;
+      case "14d":
+        setDays("14d");
+        setLoader(true);
+        break;
+      case "30d":
+        setDays("30d");
+        setLoader(true);
+        break;
+      case "60d":
+        setDays("60d");
+        setLoader(true);
+        break;
+      case "200d":
+        setDays("200d");
+        setLoader(true);
+        break;
+      case "365d":
+        setDays("365d");
+        setLoader(true);
+        break;
+      case "max":
+        setDays("max");
+        setLoader(true);
+        break;
+      default:
+        setDays("24h");
+        setLoader(true);
+        break;
+    }
+  };
   useEffect(() => {
     const fetch = async () => {
       try {
         const { data } = await axios.get(`${server}/coins/${params.id}`);
-        const {data:chartData} = await axios.get(`${server}/coins/${params.id}/market_chart?vs_currency=${currency}&days=${days}`)
+        const { data: chartData } = await axios.get(
+          `${server}/coins/${params.id}/market_chart?vs_currency=${currency}&days=${days}`
+        );
         setCoin(data);
         setChartrr(chartData.prices);
         setLoader(false);
@@ -33,7 +76,7 @@ function CryptoDetails() {
       }
     };
     fetch();
-  }, [currency, params,days]);
+  }, [currency, params.id, days]);
 
   if (error)
     return (
@@ -222,8 +265,21 @@ function CryptoDetails() {
             </div>
           </div>
           <div className="chart">
-              <Chart currency={currency} arr={chartArr} />
+            <Chart currency={currency} arr={chartArr} days={days}/>
+            <div className="buttons">
+              {btns.map((i) => {
+                return (
+                  <button
+                    key={i}
+                    onClick={() => switchChartData(i)}
+                    className={`button${i}`}
+                  >
+                    {i}
+                  </button>
+                );
+              })}
             </div>
+          </div>
         </div>
       )}
     </>

@@ -27,8 +27,8 @@ function Chart({ arr = [], currency, days }) {
       date.push(new Date(arr[i][0]).toLocaleTimeString());
     } else {
       date.push(new Date(arr[i][0]).toLocaleDateString());
-      prices.push(arr[i][1]);
     }
+    prices.push(arr[i][1]);
   }
   return (
     <Line
