@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { server } from "../index";
+import Footer from "./Footer"
 import DataTableTemplate from "./DataTableTemplate";
 import Error from "./Error";
 import Loader from "./Loader";
@@ -25,6 +26,9 @@ function Coins() {
       setPage(prev => prev-1);
     }
   }
+  useEffect(()=>{
+    document.title="Crypto Castle - Coins"
+  },[])
   useEffect(() => {
     const fetch = async () => {
       try {
@@ -32,7 +36,6 @@ function Coins() {
           `${server}/coins/markets?vs_currency=${currency}&per_page=100&page=${page}`
         );
         setCoins(data);
-        console.log(data);
         setLoader(false);
       } catch (error) {
         setLoader(false);
@@ -100,6 +103,7 @@ function Coins() {
           <Pagination handlePrevious={handlePrevious} setPage={setPage}/>
         </div>
       )}
+      <Footer/>
     </>
   );
 }

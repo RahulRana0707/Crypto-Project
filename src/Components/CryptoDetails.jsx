@@ -60,6 +60,9 @@ function CryptoDetails() {
         break;
     }
   };
+  useEffect(()=>{
+    document.title="Crypto Castle - Coin Details"
+  },[])
   useEffect(() => {
     const fetch = async () => {
       try {

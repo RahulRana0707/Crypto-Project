@@ -19,12 +19,12 @@ function Navbar() {
   return (
     <header>
       <div className="container">
-        <div className="logo">
+        <Link to={"/"} className="logo">
           <span>
             <GiElvenCastle />
           </span>
           <h3 className="logo-name">Crypto Castle</h3>
-        </div>
+        </Link>
         <div className="nav-links" ref={ref} onClick={closeNav}>
           <ul>
           <span><AiOutlineClose/></span>

@@ -7,11 +7,14 @@ import DataTableTemplate from "./DataTableTemplate";
 import { Link } from "react-router-dom";
 import { BsBoxArrowInDown } from "react-icons/bs";
 import slider1 from "../Assets/slider1.jpg";
+import Footer from "./Footer";
 function Home() {
   const [trending, setTrending] = useState([]);
   const [loader, setLoader] = useState(true);
   const [coins, setCoins] = useState([]);
-
+  useEffect(()=>{
+    document.title="Crypto Castle - Home"
+  },[])
   useEffect(() => {
     const fetch = async () => {
       try {
@@ -21,7 +24,6 @@ function Home() {
         );
         setTrending(data.coins);
         setCoins(coinData);
-        console.log(coinData);
         setLoader(false);
       } catch (error) {
         console.log(error);
@@ -114,6 +116,7 @@ function Home() {
           </div>
         </div>
       )}
+      <Footer/>
     </>
   );
 }
